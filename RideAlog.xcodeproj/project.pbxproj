@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAEB1389149FE214008BDF40 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB1388149FE214008BDF40 /* UIKit.framework */; };
+		BAEB138B149FE214008BDF40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138A149FE214008BDF40 /* Foundation.framework */; };
+		BAEB138D149FE214008BDF40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138C149FE214008BDF40 /* CoreGraphics.framework */; };
+		BAEB1393149FE214008BDF40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAEB1391149FE214008BDF40 /* InfoPlist.strings */; };
+		BAEB1395149FE214008BDF40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1394149FE214008BDF40 /* main.m */; };
+		BAEB1399149FE214008BDF40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1398149FE214008BDF40 /* AppDelegate.m */; };
+		BAEB139C149FE214008BDF40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB139B149FE214008BDF40 /* ViewController.m */; };
+		BAEB139F149FE214008BDF40 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAEB139D149FE214008BDF40 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAEB1384149FE214008BDF40 /* RideAlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideAlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAEB1388149FE214008BDF40 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BAEB138A149FE214008BDF40 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BAEB138C149FE214008BDF40 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BAEB1390149FE214008BDF40 /* RideAlog-Info.plist */ = {isa = PBXFileReference; path = "RideAlog-Info.plist"; sourceTree = "<group>"; };
+		BAEB1392149FE214008BDF40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BAEB1394149FE214008BDF40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BAEB1396149FE214008BDF40 /* RideAlog-Prefix.pch */ = {isa = PBXFileReference; path = "RideAlog-Prefix.pch"; sourceTree = "<group>"; };
+		BAEB1397149FE214008BDF40 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		BAEB1398149FE214008BDF40 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BAEB139A149FE214008BDF40 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		BAEB139B149FE214008BDF40 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BAEB139E149FE214008BDF40 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAEB1381149FE214008BDF40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAEB1389149FE214008BDF40 /* UIKit.framework in Frameworks */,
+				BAEB138B149FE214008BDF40 /* Foundation.framework in Frameworks */,
+				BAEB138D149FE214008BDF40 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BAEB1379149FE214008BDF40 = {
+			isa = PBXGroup;
+			children = (
+				BAEB138E149FE214008BDF40 /* RideAlog */,
+				BAEB1387149FE214008BDF40 /* Frameworks */,
+				BAEB1385149FE214008BDF40 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BAEB1385149FE214008BDF40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAEB1384149FE214008BDF40 /* RideAlog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAEB1387149FE214008BDF40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAEB1388149FE214008BDF40 /* UIKit.framework */,
+				BAEB138A149FE214008BDF40 /* Foundation.framework */,
+				BAEB138C149FE214008BDF40 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAEB138E149FE214008BDF40 /* RideAlog */ = {
+			isa = PBXGroup;
+			children = (
+				BAEB1397149FE214008BDF40 /* AppDelegate.h */,
+				BAEB1398149FE214008BDF40 /* AppDelegate.m */,
+				BAEB139A149FE214008BDF40 /* ViewController.h */,
+				BAEB139B149FE214008BDF40 /* ViewController.m */,
+				BAEB139D149FE214008BDF40 /* ViewController.xib */,
+				BAEB138F149FE214008BDF40 /* Supporting Files */,
+			);
+			path = RideAlog;
+			sourceTree = "<group>";
+		};
+		BAEB138F149FE214008BDF40 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAEB1390149FE214008BDF40 /* RideAlog-Info.plist */,
+				BAEB1391149FE214008BDF40 /* InfoPlist.strings */,
+				BAEB1394149FE214008BDF40 /* main.m */,
+				BAEB1396149FE214008BDF40 /* RideAlog-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAEB1383149FE214008BDF40 /* RideAlog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAEB13A2149FE214008BDF40 /* Build configuration list for PBXNativeTarget "RideAlog" */;
+			buildPhases = (
+				BAEB1380149FE214008BDF40 /* Sources */,
+				BAEB1381149FE214008BDF40 /* Frameworks */,
+				BAEB1382149FE214008BDF40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RideAlog;
+			productName = RideAlog;
+			productReference = BAEB1384149FE214008BDF40 /* RideAlog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAEB137B149FE214008BDF40 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = BAEB137E149FE214008BDF40 /* Build configuration list for PBXProject "RideAlog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BAEB1379149FE214008BDF40;
+			productRefGroup = BAEB1385149FE214008BDF40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAEB1383149FE214008BDF40 /* RideAlog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAEB1382149FE214008BDF40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAEB1393149FE214008BDF40 /* InfoPlist.strings in Resources */,
+				BAEB139F149FE214008BDF40 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAEB1380149FE214008BDF40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAEB1395149FE214008BDF40 /* main.m in Sources */,
+				BAEB1399149FE214008BDF40 /* AppDelegate.m in Sources */,
+				BAEB139C149FE214008BDF40 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BAEB1391149FE214008BDF40 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAEB1392149FE214008BDF40 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BAEB139D149FE214008BDF40 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAEB139E149FE214008BDF40 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BAEB13A0149FE214008BDF40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BAEB13A1149FE214008BDF40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAEB13A3149FE214008BDF40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RideAlog/RideAlog-Prefix.pch";
+				INFOPLIST_FILE = "RideAlog/RideAlog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BAEB13A4149FE214008BDF40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RideAlog/RideAlog-Prefix.pch";
+				INFOPLIST_FILE = "RideAlog/RideAlog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAEB137E149FE214008BDF40 /* Build configuration list for PBXProject "RideAlog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAEB13A0149FE214008BDF40 /* Debug */,
+				BAEB13A1149FE214008BDF40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAEB13A2149FE214008BDF40 /* Build configuration list for PBXNativeTarget "RideAlog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAEB13A3149FE214008BDF40 /* Debug */,
+				BAEB13A4149FE214008BDF40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BAEB137B149FE214008BDF40 /* Project object */;
+}

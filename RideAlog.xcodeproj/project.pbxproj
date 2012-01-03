@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA160EF614A13AF6002AB946 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */; };
+		BA2FBA07149FFDDF009E5730 /* RideAlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA2FBA05149FFDDF009E5730 /* RideAlog.xcdatamodeld */; };
+		BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D514A001DB00A78417 /* Waypoint.m */; };
+		BA37F5D914A001ED00A78417 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D814A001ED00A78417 /* Trip.m */; };
+		BA37F5DC14A0027500A78417 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DB14A0027500A78417 /* Path.m */; };
+		BA37F5DF14A0041300A78417 /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DE14A0041300A78417 /* PathView.m */; };
 		BAEB1389149FE214008BDF40 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB1388149FE214008BDF40 /* UIKit.framework */; };
 		BAEB138B149FE214008BDF40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138A149FE214008BDF40 /* Foundation.framework */; };
 		BAEB138D149FE214008BDF40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138C149FE214008BDF40 /* CoreGraphics.framework */; };
@@ -14,23 +20,40 @@
 		BAEB1395149FE214008BDF40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1394149FE214008BDF40 /* main.m */; };
 		BAEB1399149FE214008BDF40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB1398149FE214008BDF40 /* AppDelegate.m */; };
 		BAEB139C149FE214008BDF40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAEB139B149FE214008BDF40 /* ViewController.m */; };
-		BAEB139F149FE214008BDF40 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAEB139D149FE214008BDF40 /* ViewController.xib */; };
+		BAEB13BD149FE4C8008BDF40 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB13B5149FE4B7008BDF40 /* AudioToolbox.framework */; };
+		BAEB13BE149FE4C8008BDF40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB13B6149FE4B7008BDF40 /* AVFoundation.framework */; };
+		BAEB13BF149FE4C8008BDF40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB13B7149FE4B7008BDF40 /* CoreLocation.framework */; };
+		BAEB13C0149FE4C8008BDF40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB13B8149FE4B7008BDF40 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA160EF414A13AF6002AB946 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		BA2FBA06149FFDDF009E5730 /* RideAlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RideAlog.xcdatamodel; sourceTree = "<group>"; };
+		BA37F5D414A001DB00A78417 /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
+		BA37F5D514A001DB00A78417 /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
+		BA37F5D714A001ED00A78417 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
+		BA37F5D814A001ED00A78417 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
+		BA37F5DA14A0027500A78417 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		BA37F5DB14A0027500A78417 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
+		BA37F5DD14A0041300A78417 /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
+		BA37F5DE14A0041300A78417 /* PathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathView.m; sourceTree = "<group>"; };
 		BAEB1384149FE214008BDF40 /* RideAlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideAlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEB1388149FE214008BDF40 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BAEB138A149FE214008BDF40 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BAEB138C149FE214008BDF40 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BAEB1390149FE214008BDF40 /* RideAlog-Info.plist */ = {isa = PBXFileReference; path = "RideAlog-Info.plist"; sourceTree = "<group>"; };
+		BAEB1390149FE214008BDF40 /* RideAlog-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RideAlog-Info.plist"; sourceTree = "<group>"; };
 		BAEB1392149FE214008BDF40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BAEB1394149FE214008BDF40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BAEB1396149FE214008BDF40 /* RideAlog-Prefix.pch */ = {isa = PBXFileReference; path = "RideAlog-Prefix.pch"; sourceTree = "<group>"; };
-		BAEB1397149FE214008BDF40 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		BAEB1396149FE214008BDF40 /* RideAlog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RideAlog-Prefix.pch"; sourceTree = "<group>"; };
+		BAEB1397149FE214008BDF40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BAEB1398149FE214008BDF40 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BAEB139A149FE214008BDF40 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		BAEB139A149FE214008BDF40 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BAEB139B149FE214008BDF40 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BAEB139E149FE214008BDF40 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BAEB13B5149FE4B7008BDF40 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BAEB13B6149FE4B7008BDF40 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BAEB13B7149FE4B7008BDF40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BAEB13B8149FE4B7008BDF40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +64,37 @@
 				BAEB1389149FE214008BDF40 /* UIKit.framework in Frameworks */,
 				BAEB138B149FE214008BDF40 /* Foundation.framework in Frameworks */,
 				BAEB138D149FE214008BDF40 /* CoreGraphics.framework in Frameworks */,
+				BAEB13BD149FE4C8008BDF40 /* AudioToolbox.framework in Frameworks */,
+				BAEB13BE149FE4C8008BDF40 /* AVFoundation.framework in Frameworks */,
+				BAEB13BF149FE4C8008BDF40 /* CoreLocation.framework in Frameworks */,
+				BAEB13C0149FE4C8008BDF40 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA2FBA03149FFDB2009E5730 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FBA05149FFDDF009E5730 /* RideAlog.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		BA37F5E314A01BF400A78417 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				BA37F5DA14A0027500A78417 /* Path.h */,
+				BA37F5DB14A0027500A78417 /* Path.m */,
+				BA37F5DD14A0041300A78417 /* PathView.h */,
+				BA37F5DE14A0041300A78417 /* PathView.m */,
+				BA37F5D414A001DB00A78417 /* Waypoint.h */,
+				BA37F5D514A001DB00A78417 /* Waypoint.m */,
+			);
+			name = Path;
+			sourceTree = "<group>";
+		};
 		BAEB1379149FE214008BDF40 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +115,10 @@
 		BAEB1387149FE214008BDF40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAEB13B5149FE4B7008BDF40 /* AudioToolbox.framework */,
+				BAEB13B6149FE4B7008BDF40 /* AVFoundation.framework */,
+				BAEB13B7149FE4B7008BDF40 /* CoreLocation.framework */,
+				BAEB13B8149FE4B7008BDF40 /* MapKit.framework */,
 				BAEB1388149FE214008BDF40 /* UIKit.framework */,
 				BAEB138A149FE214008BDF40 /* Foundation.framework */,
 				BAEB138C149FE214008BDF40 /* CoreGraphics.framework */,
@@ -77,12 +129,17 @@
 		BAEB138E149FE214008BDF40 /* RideAlog */ = {
 			isa = PBXGroup;
 			children = (
+				BA2FBA03149FFDB2009E5730 /* Models */,
 				BAEB1397149FE214008BDF40 /* AppDelegate.h */,
 				BAEB1398149FE214008BDF40 /* AppDelegate.m */,
+				BA160EF414A13AF6002AB946 /* MKMapView+ZoomLevel.h */,
+				BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */,
 				BAEB139A149FE214008BDF40 /* ViewController.h */,
 				BAEB139B149FE214008BDF40 /* ViewController.m */,
-				BAEB139D149FE214008BDF40 /* ViewController.xib */,
 				BAEB138F149FE214008BDF40 /* Supporting Files */,
+				BA37F5D714A001ED00A78417 /* Trip.h */,
+				BA37F5D814A001ED00A78417 /* Trip.m */,
+				BA37F5E314A01BF400A78417 /* Path */,
 			);
 			path = RideAlog;
 			sourceTree = "<group>";
@@ -149,7 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEB1393149FE214008BDF40 /* InfoPlist.strings in Resources */,
-				BAEB139F149FE214008BDF40 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +219,12 @@
 				BAEB1395149FE214008BDF40 /* main.m in Sources */,
 				BAEB1399149FE214008BDF40 /* AppDelegate.m in Sources */,
 				BAEB139C149FE214008BDF40 /* ViewController.m in Sources */,
+				BA2FBA07149FFDDF009E5730 /* RideAlog.xcdatamodeld in Sources */,
+				BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */,
+				BA37F5D914A001ED00A78417 /* Trip.m in Sources */,
+				BA37F5DC14A0027500A78417 /* Path.m in Sources */,
+				BA37F5DF14A0041300A78417 /* PathView.m in Sources */,
+				BA160EF614A13AF6002AB946 /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,14 +237,6 @@
 				BAEB1392149FE214008BDF40 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BAEB139D149FE214008BDF40 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BAEB139E149FE214008BDF40 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -236,6 +290,10 @@
 		BAEB13A3149FE214008BDF40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RideAlog/RideAlog-Prefix.pch";
 				INFOPLIST_FILE = "RideAlog/RideAlog-Info.plist";
@@ -247,6 +305,10 @@
 		BAEB13A4149FE214008BDF40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RideAlog/RideAlog-Prefix.pch";
 				INFOPLIST_FILE = "RideAlog/RideAlog-Info.plist";
@@ -274,8 +336,22 @@
 				BAEB13A4149FE214008BDF40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BA2FBA05149FFDDF009E5730 /* RideAlog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA2FBA06149FFDDF009E5730 /* RideAlog.xcdatamodel */,
+			);
+			currentVersion = BA2FBA06149FFDDF009E5730 /* RideAlog.xcdatamodel */;
+			path = RideAlog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BAEB137B149FE214008BDF40 /* Project object */;
 }

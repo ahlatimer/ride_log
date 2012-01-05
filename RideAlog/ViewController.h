@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "MKMapView+ZoomLevel.h"
 #import "Path.h"
 #import "PathView.h"
 
@@ -19,5 +18,6 @@
 @property (nonatomic, retain) PathView *pathView;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) UIView *containerView;
+@property (nonatomic, retain) UIToolbar *toolbar;
 
 @end

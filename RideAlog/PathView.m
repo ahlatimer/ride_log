@@ -9,7 +9,8 @@
 #import "PathView.h"
 
 @interface PathView (FileInternal)
-- (CGPathRef)newPathForPoints:(NSMutableArray *)points
+- (CGPathRef)newPathForPoints:(MKMapPoint *)points
+                   pointCount:(NSUInteger)pointCount
                      clipRect:(MKMapRect)mapRect
                     zoomScale:(MKZoomScale)zoomScale;
 @end
@@ -30,8 +31,9 @@
   
   [path lockForReading];
   CGPathRef cgPath = [self newPathForPoints:path.points
-                                 clipRect:clipRect
-                                zoomScale:zoomScale];
+                                 pointCount:path.pointCount
+                                   clipRect:clipRect
+                                  zoomScale:zoomScale];
   [path unlockForReading];
   
   if (cgPath != nil)
@@ -63,7 +65,8 @@ static BOOL lineIntersectsRect(MKMapPoint p0, MKMapPoint p1, MKMapRect r)
 
 #define MIN_POINT_DELTA 5.0
 
-- (CGPathRef)newPathForPoints:(NSMutableArray *)points
+- (CGPathRef)newPathForPoints:(MKMapPoint *)points
+                   pointCount:(NSUInteger)pointCount
                      clipRect:(MKMapRect)mapRect
                     zoomScale:(MKZoomScale)zoomScale
 {
@@ -73,7 +76,7 @@ static BOOL lineIntersectsRect(MKMapPoint p0, MKMapPoint p1, MKMapRect r)
   // While it is possible to just add all the points and let CoreGraphics 
   // handle clipping and flatness, it is much faster to do it yourself:
   //
-  if ([points count] < 2)
+  if (pointCount < 2)
     return NULL;
   
   CGMutablePathRef path = NULL;
@@ -88,23 +91,23 @@ static BOOL lineIntersectsRect(MKMapPoint p0, MKMapPoint p1, MKMapRect r)
   double minPointDelta = MIN_POINT_DELTA / zoomScale;
   double c2 = POW2(minPointDelta);
   
-  Waypoint *point, *lastPoint = [points objectAtIndex:(NSInteger) 0];
+  MKMapPoint point, lastPoint = points[0];
   NSUInteger i;
-  for (i = 1; i < [points count] - 1; i++)
+  for (i = 1; i < pointCount - 1; i++)
   {
-    point = [points objectAtIndex:(NSInteger) i];
+    point = points[i];
     double a2b2 = POW2(point.x - lastPoint.x) + POW2(point.y - lastPoint.y);
     if (a2b2 >= c2) {
-      if (lineIntersectsRect(point.point, lastPoint.point, mapRect))
+      if (lineIntersectsRect(point, lastPoint, mapRect))
       {
         if (!path) 
           path = CGPathCreateMutable();
         if (needsMove)
         {
-          CGPoint lastCGPoint = [self pointForMapPoint:lastPoint.point];
+          CGPoint lastCGPoint = [self pointForMapPoint:lastPoint];
           CGPathMoveToPoint(path, NULL, lastCGPoint.x, lastCGPoint.y);
         }
-        CGPoint cgPoint = [self pointForMapPoint:point.point];
+        CGPoint cgPoint = [self pointForMapPoint:point];
         CGPathAddLineToPoint(path, NULL, cgPoint.x, cgPoint.y);
       }
       else
@@ -119,17 +122,17 @@ static BOOL lineIntersectsRect(MKMapPoint p0, MKMapPoint p1, MKMapRect r)
 #undef POW2
   
   // If the last line segment intersects the mapRect at all, add it unconditionally
-  point = [points lastObject];
-  if (lineIntersectsRect(lastPoint.point, point.point, mapRect))
+  point = points[pointCount - 1];
+  if (lineIntersectsRect(lastPoint, point, mapRect))
   {
     if (!path)
       path = CGPathCreateMutable();
     if (needsMove)
     {
-      CGPoint lastCGPoint = [self pointForMapPoint:lastPoint.point];
+      CGPoint lastCGPoint = [self pointForMapPoint:lastPoint];
       CGPathMoveToPoint(path, NULL, lastCGPoint.x, lastCGPoint.y);
     }
-    CGPoint cgPoint = [self pointForMapPoint:point.point];
+    CGPoint cgPoint = [self pointForMapPoint:point];
     CGPathAddLineToPoint(path, NULL, cgPoint.x, cgPoint.y);
   }
   

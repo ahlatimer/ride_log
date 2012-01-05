@@ -13,6 +13,9 @@
 @interface Path : NSObject <MKOverlay>
 { 
   MKMapRect boundingMapRect;
+  MKMapPoint *points;
+  NSUInteger pointCount;
+  NSUInteger pointSpace;
   
   pthread_rwlock_t rwLock;
 }
@@ -37,7 +40,8 @@
 // via lockForReading.  Once you're done accessing the points, release the
 // read lock with unlockForReading.
 //
-@property (atomic, retain) NSMutableArray *points;
+@property (readonly) MKMapPoint *points;
+@property (readonly) NSUInteger pointCount;
 
 - (void)unlockForReading;
 

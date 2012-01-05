@@ -10,7 +10,7 @@
 
 @implementation ViewController
 
-@synthesize mapView, path, pathView, locationManager, containerView;
+@synthesize mapView, path, pathView, locationManager, containerView, toolbar;
 
 - (void)didReceiveMemoryWarning
 {
@@ -29,9 +29,26 @@
   [super loadView];
   [self.view setBackgroundColor:[UIColor whiteColor]];
   
-  mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+  // mapview
+  mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44)];
   [mapView setShowsUserLocation:YES];
+  mapView.delegate = self;
+  
+  [self.view addSubview:self.mapView];
+  
+  // toolbar
+  toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 44.0, self.view.bounds.size.width, 44.0f)];
+  
+  UIBarButtonItem *addNewMap = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createRoute)];
+  toolbar.items = [NSArray arrayWithObject:addNewMap];
+  
+  [self.view addSubview:self.toolbar];
+}
 
+-(void) createRoute 
+{
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"hello" message:@"you clicked me" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+  [alertView show];
 }
 
 
@@ -44,8 +61,6 @@
   self.locationManager.delegate = self; // Tells the location manager to send updates to this object
   self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
   [self.locationManager startUpdatingLocation];
-  
-  [self.view addSubview:self.mapView];
 }
 
 
@@ -66,8 +81,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-  if (newLocation)
-  {		
+  if(newLocation) {		
 		// make sure the old and new coordinates are different
     if ((oldLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
         (oldLocation.coordinate.longitude != newLocation.coordinate.longitude))
@@ -81,8 +95,7 @@
         [mapView addOverlay:path];
         
         // On the first location update only, zoom map to user location
-        MKCoordinateRegion region = 
-        MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 2000, 2000);
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 2000, 2000);
         [mapView setRegion:region animated:YES];
       }
       else

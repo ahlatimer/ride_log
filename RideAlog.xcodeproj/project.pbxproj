@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA160EF614A13AF6002AB946 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */; };
 		BA2FBA07149FFDDF009E5730 /* RideAlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA2FBA05149FFDDF009E5730 /* RideAlog.xcdatamodeld */; };
 		BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D514A001DB00A78417 /* Waypoint.m */; };
 		BA37F5D914A001ED00A78417 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D814A001ED00A78417 /* Trip.m */; };
@@ -27,8 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA160EF414A13AF6002AB946 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
-		BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		BA2FBA06149FFDDF009E5730 /* RideAlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RideAlog.xcdatamodel; sourceTree = "<group>"; };
 		BA37F5D414A001DB00A78417 /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
 		BA37F5D514A001DB00A78417 /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
@@ -132,8 +129,6 @@
 				BA2FBA03149FFDB2009E5730 /* Models */,
 				BAEB1397149FE214008BDF40 /* AppDelegate.h */,
 				BAEB1398149FE214008BDF40 /* AppDelegate.m */,
-				BA160EF414A13AF6002AB946 /* MKMapView+ZoomLevel.h */,
-				BA160EF514A13AF6002AB946 /* MKMapView+ZoomLevel.m */,
 				BAEB139A149FE214008BDF40 /* ViewController.h */,
 				BAEB139B149FE214008BDF40 /* ViewController.m */,
 				BAEB138F149FE214008BDF40 /* Supporting Files */,
@@ -224,7 +219,6 @@
 				BA37F5D914A001ED00A78417 /* Trip.m in Sources */,
 				BA37F5DC14A0027500A78417 /* Path.m in Sources */,
 				BA37F5DF14A0041300A78417 /* PathView.m in Sources */,
-				BA160EF614A13AF6002AB946 /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

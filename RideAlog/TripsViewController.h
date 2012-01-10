@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Path.h"
+#import "Trips.h"
 
 @class TripsViewController;
 
@@ -21,5 +22,6 @@
 @interface TripsViewController : UIViewController
   
 @property (nonatomic, assign) NSObject<TripsViewControllerDelegate> *delegate;
+@property (nonatomic, retain) Trips *trips;
 
 @end

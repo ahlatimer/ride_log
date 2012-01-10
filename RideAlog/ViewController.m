@@ -10,10 +10,9 @@
 
 @implementation ViewController
 
-@synthesize mapView, path, pathView, locationManager, containerView, toolbar, tripsViewController, name;
+@synthesize mapView, path, pathView, locationManager, containerView, toolbar, tripsViewController, name, trips;
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
   [super didReceiveMemoryWarning];
   
@@ -24,8 +23,7 @@
 
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
+- (void)loadView {
   [super loadView];
   [self.view setBackgroundColor:[UIColor whiteColor]];
   
@@ -38,21 +36,22 @@
   
   // toolbar
   toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 44.0, self.view.bounds.size.width, 44.0f)];
-  
   toolbar.items = [self toolbarItems:NO];
-  
   [self.view addSubview:self.toolbar];
+  
+  trips = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:@"trips"]]];
+  if(!trips) {
+    trips = [[Trips alloc] init];
+  }
 }
 
--(void) createRoute 
-{
+-(void) createRoute {
   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Name:" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
   [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
   [alertView show];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
   if([title isEqualToString:@"Done"])
   {
@@ -68,7 +67,7 @@
     
     CLLocation *location = [locationManager location];
     
-    path = [[Path alloc] initWithCenterCoordinate:location.coordinate name:(name ? name : @"Test")];
+    path = [[Path alloc] initWithCenterCoordinate:location.coordinate name:self.name];
     [mapView addOverlay:path];
     
     // On the first location update only, zoom map to user location
@@ -111,8 +110,7 @@
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   
   self.locationManager = [[CLLocationManager alloc] init];
@@ -122,55 +120,28 @@
 }
 
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
+           fromLocation:(CLLocation *)oldLocation {
   if(newLocation) {		
 		// make sure the old and new coordinates are different
     if ((oldLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-        (oldLocation.coordinate.longitude != newLocation.coordinate.longitude))
-    {    
-      if (!path)
-      {
-        // This is the first time we're getting a location update, so create
-        // the Path and add it to the map.
-        //
-        path = [[Path alloc] initWithCenterCoordinate:newLocation.coordinate name:(name ? name : @"Test")];
-        [mapView addOverlay:path];
-        
-        // On the first location update only, zoom map to user location
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 2000, 2000);
-        [mapView setRegion:region animated:YES];
-      }
-      else
-      {
-        // This is a subsequent location update.
-        // If the crumbs MKOverlay model object determines that the current location has moved
-        // far enough from the previous location, use the returned updateRect to redraw just
-        // the changed area.
-        //
-        // note: iPhone 3G will locate you using the triangulation of the cell towers.
-        // so you may experience spikes in location data (in small time intervals)
-        // due to 3G tower triangulation.
-        // 
+        (oldLocation.coordinate.longitude != newLocation.coordinate.longitude)) {    
+      if (path && name) {
         MKMapRect updateRect = [path addCoordinate:newLocation.coordinate];
         
-        if (!MKMapRectIsNull(updateRect))
-        {
+        if (!MKMapRectIsNull(updateRect)) {
           // There is a non null update rect.
           // Compute the currently visible map zoom scale
           MKZoomScale currentZoomScale = (CGFloat)(mapView.bounds.size.width / mapView.visibleMapRect.size.width);
@@ -185,10 +156,8 @@
   }
 }
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-  if (!pathView)
-  {
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+  if (!pathView) {
     pathView = [[PathView alloc] initWithOverlay:overlay];
   }
   return pathView;

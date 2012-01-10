@@ -43,8 +43,11 @@
 @property (readonly) MKMapPoint *points;
 @property (readonly) NSUInteger pointCount;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *filename;
 
 - (void)unlockForReading;
 - (void)save;
+
++ (Path *)loadPathNamed:(NSString *)name;
 
 @end

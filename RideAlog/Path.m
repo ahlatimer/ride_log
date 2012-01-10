@@ -13,7 +13,7 @@
 
 @implementation Path
 
-@synthesize points, pointCount, name;
+@synthesize points, pointCount, name, filename;
 
 - (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord name:(NSString *)n {
 	self = [super init];
@@ -108,8 +108,10 @@
 
 
 -(void) save {
-  NSLog(@"Saving to %@", [NSTemporaryDirectory() stringByAppendingPathComponent:self.name]);
-  [NSKeyedArchiver archiveRootObject:self toFile:[NSTemporaryDirectory() stringByAppendingPathComponent:self.name]];
+  if(!self.filename) {
+    self.filename = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
+  }
+  [NSKeyedArchiver archiveRootObject:self toFile:[NSTemporaryDirectory() stringByAppendingPathComponent:self.filename]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -153,7 +155,9 @@
 }
 
 +(Path *) loadPathNamed:(NSString *)name {
-  return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:name]]];
+  Path *path = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:name]]];
+  path.filename = name;
+  return path;
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation ViewController
 
-@synthesize mapView, path, pathView, locationManager, containerView, toolbar;
+@synthesize mapView, path, pathView, locationManager, containerView, toolbar, tripsViewController, name;
 
 - (void)didReceiveMemoryWarning
 {
@@ -39,18 +39,76 @@
   // toolbar
   toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 44.0, self.view.bounds.size.width, 44.0f)];
   
-  UIBarButtonItem *addNewMap = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createRoute)];
-  toolbar.items = [NSArray arrayWithObject:addNewMap];
+  toolbar.items = [self toolbarItems:NO];
   
   [self.view addSubview:self.toolbar];
 }
 
 -(void) createRoute 
 {
-  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"hello" message:@"you clicked me" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Name:" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Done", nil];
+  [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
   [alertView show];
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+  if([title isEqualToString:@"Done"])
+  {
+    name = [[alertView textFieldAtIndex:0] text];
+    
+    // Save the old path and remove it from the map
+    if(path) {
+      [path save];
+      [mapView removeOverlay:path];
+      self.path = nil;
+      self.pathView = nil;
+    }
+    
+    CLLocation *location = [locationManager location];
+    
+    path = [[Path alloc] initWithCenterCoordinate:location.coordinate name:(name ? name : @"Test")];
+    [mapView addOverlay:path];
+    
+    // On the first location update only, zoom map to user location
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000);
+    [mapView setRegion:region animated:YES];
+  }
+}
+
+-(void) showRoutes {
+  // show all of the routes
+  tripsViewController = [[TripsViewController alloc] initWithNibName:nil bundle:nil];
+  [self.view addSubview:tripsViewController.view];  
+  self.tripsViewController.delegate = self;
+  toolbar.items = [self toolbarItems:YES];
+}
+
+-(void) hideRoutes {
+  // show all of the routes
+  toolbar.items = [self toolbarItems:NO];
+  
+  [self.tripsViewController.view removeFromSuperview];
+}
+
+-(NSArray *) toolbarItems:(BOOL)tripsViewControllerShown {
+  UIBarButtonItem *addNewMap = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createRoute)];
+  UIBarButtonItem *showMaps = nil;
+  
+  if(tripsViewControllerShown) {
+    showMaps = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.tripsViewController action:@selector(selectRoute)];
+  } else {
+    showMaps = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(showRoutes)];
+  }
+  
+  UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  return [NSArray arrayWithObjects:showMaps, flexibleSpace, addNewMap, nil];
+}
+
+-(void) tripsViewController:(TripsViewController *)viewController didSelectRoute:(Path *)path {
+  [self hideRoutes];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -89,9 +147,9 @@
       if (!path)
       {
         // This is the first time we're getting a location update, so create
-        // the CrumbPath and add it to the map.
+        // the Path and add it to the map.
         //
-        path = [[Path alloc] initWithCenterCoordinate:newLocation.coordinate];
+        path = [[Path alloc] initWithCenterCoordinate:newLocation.coordinate name:(name ? name : @"Test")];
         [mapView addOverlay:path];
         
         // On the first location update only, zoom map to user location

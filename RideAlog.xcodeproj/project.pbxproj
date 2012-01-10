@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		BA2FBA07149FFDDF009E5730 /* RideAlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA2FBA05149FFDDF009E5730 /* RideAlog.xcdatamodeld */; };
 		BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D514A001DB00A78417 /* Waypoint.m */; };
-		BA37F5D914A001ED00A78417 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D814A001ED00A78417 /* Trip.m */; };
 		BA37F5DC14A0027500A78417 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DB14A0027500A78417 /* Path.m */; };
 		BA37F5DF14A0041300A78417 /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DE14A0041300A78417 /* PathView.m */; };
+		BA4D039514B66EAA0044D52F /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D039414B66EAA0044D52F /* TripsViewController.m */; };
 		BAEB1389149FE214008BDF40 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB1388149FE214008BDF40 /* UIKit.framework */; };
 		BAEB138B149FE214008BDF40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138A149FE214008BDF40 /* Foundation.framework */; };
 		BAEB138D149FE214008BDF40 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB138C149FE214008BDF40 /* CoreGraphics.framework */; };
@@ -29,12 +29,12 @@
 		BA2FBA06149FFDDF009E5730 /* RideAlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RideAlog.xcdatamodel; sourceTree = "<group>"; };
 		BA37F5D414A001DB00A78417 /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
 		BA37F5D514A001DB00A78417 /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
-		BA37F5D714A001ED00A78417 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
-		BA37F5D814A001ED00A78417 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		BA37F5DA14A0027500A78417 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		BA37F5DB14A0027500A78417 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		BA37F5DD14A0041300A78417 /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
 		BA37F5DE14A0041300A78417 /* PathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathView.m; sourceTree = "<group>"; };
+		BA4D039314B66EAA0044D52F /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
+		BA4D039414B66EAA0044D52F /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
 		BAEB1384149FE214008BDF40 /* RideAlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideAlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEB1388149FE214008BDF40 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BAEB138A149FE214008BDF40 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,9 +131,9 @@
 				BAEB1398149FE214008BDF40 /* AppDelegate.m */,
 				BAEB139A149FE214008BDF40 /* ViewController.h */,
 				BAEB139B149FE214008BDF40 /* ViewController.m */,
+				BA4D039314B66EAA0044D52F /* TripsViewController.h */,
+				BA4D039414B66EAA0044D52F /* TripsViewController.m */,
 				BAEB138F149FE214008BDF40 /* Supporting Files */,
-				BA37F5D714A001ED00A78417 /* Trip.h */,
-				BA37F5D814A001ED00A78417 /* Trip.m */,
 				BA37F5E314A01BF400A78417 /* Path */,
 			);
 			path = RideAlog;
@@ -216,9 +216,9 @@
 				BAEB139C149FE214008BDF40 /* ViewController.m in Sources */,
 				BA2FBA07149FFDDF009E5730 /* RideAlog.xcdatamodeld in Sources */,
 				BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */,
-				BA37F5D914A001ED00A78417 /* Trip.m in Sources */,
 				BA37F5DC14A0027500A78417 /* Path.m in Sources */,
 				BA37F5DF14A0041300A78417 /* PathView.m in Sources */,
+				BA4D039514B66EAA0044D52F /* TripsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

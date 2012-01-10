@@ -13,11 +13,13 @@
 
 @implementation Path
 
-@synthesize points, pointCount;
+@synthesize points, pointCount, name;
 
-- (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord {
+- (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord name:(NSString *)n {
 	self = [super init];
   if(self) {
+    self.name = n;
+    
     pointSpace = INITIAL_POINT_SPACE;
     points = malloc(sizeof(MKMapPoint) * pointSpace);
     points[0] = MKMapPointForCoordinate(coord);
@@ -96,11 +98,62 @@
     double maxY = MAX(newPoint.y, prevPoint.y);
     
     updateRect = MKMapRectMake(minX, minY, maxX - minX, maxY - minY);
+    [self save];
   }
   
   pthread_rwlock_unlock(&rwLock);
   
   return updateRect;
+}
+
+
+-(void) save {
+  NSLog(@"Saving to %@", [NSTemporaryDirectory() stringByAppendingPathComponent:self.name]);
+  [NSKeyedArchiver archiveRootObject:self toFile:[NSTemporaryDirectory() stringByAppendingPathComponent:self.name]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+  for(int i = 0; i < pointCount; i++) {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSNumber numberWithDouble:points[i].x], @"x", [NSNumber numberWithDouble:points[i].y], @"y", nil];
+    [array addObject:dict];
+  }
+  [encoder encodeObject:array forKey:@"points"];
+  [encoder encodeObject:self.name forKey:@"name"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+  self = [super init];
+  NSArray *array = [decoder decodeObjectForKey:@"points"];
+  points = malloc(sizeof(MKMapPoint) * [array count]);
+  pointCount = [array count];
+  pointSpace = pointCount;
+  
+  for(int i = 0; i < pointCount; i++) {
+    NSDictionary *dict = [array objectAtIndex:i];
+    
+    points[i].x = [[dict objectForKey:@"x"] doubleValue];
+    points[i].y = [[dict objectForKey:@"y"] doubleValue];
+  }
+  
+  self.name = [decoder decodeObjectForKey:@"name"];
+  
+  MKMapPoint origin = points[0];
+  origin.x -= MKMapSizeWorld.width / 8.0;
+  origin.y -= MKMapSizeWorld.height / 8.0;
+  MKMapSize size = MKMapSizeWorld;
+  boundingMapRect = (MKMapRect) { origin, size };
+  MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
+  boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
+  
+  pthread_rwlock_init(&rwLock, NULL);
+  
+  return self;
+}
+
++(Path *) loadPathNamed:(NSString *)name {
+  return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:name]]];
 }
 
 @end

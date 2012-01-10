@@ -10,7 +10,7 @@
 #import <pthread.h>
 #import "Waypoint.h"
 
-@interface Path : NSObject <MKOverlay>
+@interface Path : NSObject <MKOverlay, NSCoding>
 { 
   MKMapRect boundingMapRect;
   MKMapPoint *points;
@@ -24,7 +24,7 @@
 // The CrumbPath's boundingMapRect will be set to a sufficiently large square
 // centered on the starting coordinate.
 //
-- (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord;
+- (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord name:(NSString *)n;
 
 // Add a location observation. A MKMapRect containing the newly added point
 // and the previously added point is returned so that the view can be updated
@@ -42,7 +42,9 @@
 //
 @property (readonly) MKMapPoint *points;
 @property (readonly) NSUInteger pointCount;
+@property (nonatomic, retain) NSString *name;
 
 - (void)unlockForReading;
+- (void)save;
 
 @end

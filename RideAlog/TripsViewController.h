@@ -23,5 +23,6 @@
   
 @property (nonatomic, assign) NSObject<TripsViewControllerDelegate> *delegate;
 @property (nonatomic, retain) Trips *trips;
+@property (nonatomic, retain) UIScrollView *scrollView;
 
 @end

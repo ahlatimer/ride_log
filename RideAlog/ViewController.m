@@ -24,9 +24,7 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-  [super loadView];
-  [self.view setBackgroundColor:[UIColor whiteColor]];
-  
+  [super loadView];  
   // mapview
   mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44)];
   [mapView setShowsUserLocation:YES];
@@ -39,10 +37,7 @@
   toolbar.items = [self toolbarItems:NO];
   [self.view addSubview:self.toolbar];
   
-  trips = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:@"trips"]]];
-  if(!trips) {
-    trips = [[Trips alloc] init];
-  }
+  trips = [Trips loadOrInit];
 }
 
 -(void) createRoute {
@@ -73,6 +68,8 @@
     // On the first location update only, zoom map to user location
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000);
     [mapView setRegion:region animated:YES];
+    
+    [trips addPath:path];
   }
 }
 
@@ -122,8 +119,16 @@
 
 - (void)viewDidUnload {
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
+  
+  self.mapView = nil;
+  self.path = nil;
+  self.pathView = nil;
+  self.locationManager = nil;
+  self.containerView = nil;
+  self.toolbar = nil;
+  self.tripsViewController = nil;
+  self.name = nil;
+  self.trips = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

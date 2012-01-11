@@ -33,6 +33,9 @@
     MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
     boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
     
+    self.filename = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
+    [self save];
+    
     // initialize read-write lock for drawing and updates
     pthread_rwlock_init(&rwLock, NULL);
   }
@@ -108,9 +111,6 @@
 
 
 -(void) save {
-  if(!self.filename) {
-    self.filename = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
-  }
   [NSKeyedArchiver archiveRootObject:self toFile:[NSTemporaryDirectory() stringByAppendingPathComponent:self.filename]];
 }
 

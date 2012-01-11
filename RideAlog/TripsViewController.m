@@ -10,19 +10,17 @@
 
 @implementation TripsViewController
 
-@synthesize delegate, trips;
+@synthesize delegate, trips, scrollView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    trips = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:@"trips"]]];
+    trips = [Trips loadOrInit];
   }
   return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
   [super didReceiveMemoryWarning];
   
@@ -32,29 +30,39 @@
 #pragma mark - View lifecycle
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
+- (void)loadView {
   [super loadView];
   
   self.view.frame = CGRectMake(0, 0, 320, 480 - 64);
-  [self.view setBackgroundColor:[UIColor magentaColor]];
+  
+  scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+  
+  for(Path *path in [trips getPaths]) {
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    [mapView addOverlay:path];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(MKCoordinateForMapPoint([path points][0]), 2000, 2000);
+    [mapView setRegion:region animated:NO];
+    
+    [scrollView addSubview:mapView];
+  }
+  
+  self.view = scrollView;
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
+  
+  scrollView.contentSize = CGSizeMake(320 * [trips countOfPaths], 480 - 64);
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }

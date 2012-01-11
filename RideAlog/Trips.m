@@ -12,14 +12,32 @@
 
 @synthesize paths, pathFilenames;
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
++(Trips *) loadOrInit { 
+  Trips *trips = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:[NSTemporaryDirectory() stringByAppendingPathComponent:@"trips"]]];
+  if(!trips) {
+    trips = [[Trips alloc] init];
+    [trips save];
+  }
+  return trips;
+}
+
+-(Trips *) init {
+  if((self = [super init]) != nil) {
+    self.pathFilenames = [[NSMutableArray alloc] init];
+    self.paths = [[NSMutableArray alloc] init];
+  }
+  
+  return self;
+}
+
+-(void) encodeWithCoder:(NSCoder *)encoder {
   [encoder encodeObject:pathFilenames forKey:@"pathFilenames"];
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+-(id) initWithCoder:(NSCoder *)decoder {
   self = [super init];
   
-  pathFilenames = [decoder decodeObjectForKey:@"pathFileNames"];
+  pathFilenames = [decoder decodeObjectForKey:@"pathFileNames"] ? : [[NSMutableArray alloc] init];
   paths = [self getPaths];
   
   return self;
@@ -48,6 +66,10 @@
   }
   
   return paths;
+}
+
+-(NSInteger) countOfPaths {
+  return [paths count];
 }
 
 @end

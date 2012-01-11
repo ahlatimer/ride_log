@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Path.h"
+#import "PathView.h"
 #import "Trips.h"
 
 @class TripsViewController;
@@ -19,10 +20,11 @@
 
 @end
 
-@interface TripsViewController : UIViewController
+@interface TripsViewController : UIViewController <MKMapViewDelegate>
   
 @property (nonatomic, assign) NSObject<TripsViewControllerDelegate> *delegate;
 @property (nonatomic, retain) Trips *trips;
 @property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, retain) PathView *pathView;
 
 @end

@@ -11,7 +11,7 @@
 
 @interface Trips : NSObject <NSCoding>
 
-@property (nonatomic, retain) NSMutableArray *pathFilenames;
+@property (nonatomic, retain) NSMutableArray *pathFileNames;
 @property (nonatomic, retain) NSMutableArray *paths;
 
 +(Trips *) loadOrInit;

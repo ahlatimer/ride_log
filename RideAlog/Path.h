@@ -49,5 +49,8 @@
 - (void)save;
 
 + (Path *)loadPathNamed:(NSString *)name;
+-(CLLocationCoordinate2D) getCentroid;
+-(double) getHeight;
+-(double) getWidth;
 
 @end

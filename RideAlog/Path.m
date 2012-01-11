@@ -160,4 +160,41 @@
   return path;
 }
 
+-(CLLocationCoordinate2D) getCentroid {
+  double xAverage = 0.0;
+  double yAverage = 0.0;
+  
+  for(int i = 0; i < pointCount; i++) {
+    xAverage += points[i].x;
+    yAverage += points[i].y;
+  }
+  
+  xAverage /= pointCount;
+  yAverage /= pointCount;
+  
+  return MKCoordinateForMapPoint(MKMapPointMake(xAverage, yAverage));
+}
+
+-(double) getHeight {
+  double max = -INFINITY;
+  double min = INFINITY;
+  for(int i = 0; i < pointCount; i++) {
+    max = MAX(max, points[i].y);
+    min = MIN(min, points[i].y);
+  }
+  
+  return MKMetersBetweenMapPoints(MKMapPointMake(0, max), MKMapPointMake(0, min)) + 2000;
+}
+
+-(double) getWidth {
+  double max = -INFINITY;
+  double min = INFINITY;
+  for(int i = 0; i < pointCount; i++) {
+    max = MAX(max, points[i].x);
+    min = MIN(min, points[i].x);
+  }
+  
+  return MKMetersBetweenMapPoints(MKMapPointMake(max, 0), MKMapPointMake(min, 0)) + 2000;
+}
+
 @end

@@ -10,7 +10,7 @@
 
 @implementation TripsViewController
 
-@synthesize delegate, trips, scrollView;
+@synthesize delegate, trips, scrollView, pathView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,17 +36,33 @@
   self.view.frame = CGRectMake(0, 0, 320, 480 - 64);
   
   scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+  scrollView.pagingEnabled = YES;
   
-  for(Path *path in [trips getPaths]) {
-    MKMapView *mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+  for(int i = 0; i < [trips countOfPaths]; i++) {
+    Path *path = [trips getPathAtIndex:i];
+    
+    CGFloat xOrigin = i * self.view.frame.size.width;
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    mapView.delegate = self;
+    
+    mapView.scrollEnabled = NO;
+    mapView.zoomEnabled = NO;
+    
     [mapView addOverlay:path];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(MKCoordinateForMapPoint([path points][0]), 2000, 2000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([path getCentroid], [path getHeight], [path getWidth]);
     [mapView setRegion:region animated:NO];
+    
+    UITextView *name = [[UITextView alloc] initWithFrame:CGRectMake(100, 20, 100, 20)];
+    name.text = [[trips getPathAtIndex:i] name];
+    name.backgroundColor = [UIColor clearColor];
+    [mapView addSubview:name];
     
     [scrollView addSubview:mapView];
   }
   
-  self.view = scrollView;
+  scrollView.contentSize = CGSizeMake(self.view.frame.size.width * [trips countOfPaths], self.view.frame.size.height);
+  
+  [self.view addSubview:scrollView];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -70,6 +86,11 @@
 - (void) selectRoute {
   [delegate tripsViewController:self didSelectRoute:nil];
   
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+  pathView = [[PathView alloc] initWithOverlay:overlay];
+  return pathView;
 }
 
 @end

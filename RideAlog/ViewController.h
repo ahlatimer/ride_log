@@ -19,11 +19,9 @@
 @property (nonatomic, retain) Path *path;
 @property (nonatomic, retain) PathView *pathView;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) UIView *containerView;
 @property (nonatomic, retain) UIToolbar *toolbar;
-@property (nonatomic, retain) TripsViewController *tripsViewController;
-@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) Trips *trips;
+@property (nonatomic, retain) TripsViewController *tripsViewController;
 
 -(NSArray *) toolbarItems:(BOOL)tripsViewControllerShow;
 

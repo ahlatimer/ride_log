@@ -10,7 +10,7 @@
 
 @implementation ViewController
 
-@synthesize mapView, path, pathView, locationManager, containerView, toolbar, tripsViewController, name, trips;
+@synthesize mapView, path, pathView, locationManager, toolbar, trips, tripsViewController;
 
 - (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
@@ -48,7 +48,7 @@
   NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
   if([title isEqualToString:@"Done"])
   {
-    name = [[alertView textFieldAtIndex:0] text];
+    NSString *name = [[alertView textFieldAtIndex:0] text];
     
     // Save the old path and remove it from the map
     if(path) {
@@ -60,7 +60,7 @@
     
     CLLocation *location = [locationManager location];
     
-    path = [[Path alloc] initWithCenterCoordinate:location.coordinate name:self.name];
+    path = [[Path alloc] initWithCenterCoordinate:location.coordinate name:name];
     [mapView addOverlay:path];
     
     // On the first location update only, zoom map to user location
@@ -122,10 +122,8 @@
   self.path = nil;
   self.pathView = nil;
   self.locationManager = nil;
-  self.containerView = nil;
   self.toolbar = nil;
   self.tripsViewController = nil;
-  self.name = nil;
   self.trips = nil;
 }
 
@@ -139,9 +137,9 @@
            fromLocation:(CLLocation *)oldLocation {
   if(newLocation) {		
 		// make sure the old and new coordinates are different
-    if ((oldLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
+    if((oldLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
         (oldLocation.coordinate.longitude != newLocation.coordinate.longitude)) {    
-      if (path && name) {
+      if(path) {
         MKMapRect updateRect = [path addCoordinate:newLocation.coordinate];
         
         if (!MKMapRectIsNull(updateRect)) {

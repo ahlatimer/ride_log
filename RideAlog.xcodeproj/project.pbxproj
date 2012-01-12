@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5D514A001DB00A78417 /* Waypoint.m */; };
 		BA37F5DC14A0027500A78417 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DB14A0027500A78417 /* Path.m */; };
 		BA37F5DF14A0041300A78417 /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA37F5DE14A0041300A78417 /* PathView.m */; };
 		BA4D039514B66EAA0044D52F /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D039414B66EAA0044D52F /* TripsViewController.m */; };
@@ -26,8 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA37F5D414A001DB00A78417 /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
-		BA37F5D514A001DB00A78417 /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
 		BA37F5DA14A0027500A78417 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		BA37F5DB14A0027500A78417 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		BA37F5DD14A0041300A78417 /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
@@ -79,8 +76,6 @@
 				BA37F5DB14A0027500A78417 /* Path.m */,
 				BA37F5DD14A0041300A78417 /* PathView.h */,
 				BA37F5DE14A0041300A78417 /* PathView.m */,
-				BA37F5D414A001DB00A78417 /* Waypoint.h */,
-				BA37F5D514A001DB00A78417 /* Waypoint.m */,
 			);
 			name = Path;
 			sourceTree = "<group>";
@@ -208,7 +203,6 @@
 				BAEB1395149FE214008BDF40 /* main.m in Sources */,
 				BAEB1399149FE214008BDF40 /* AppDelegate.m in Sources */,
 				BAEB139C149FE214008BDF40 /* ViewController.m in Sources */,
-				BA37F5D614A001DB00A78417 /* Waypoint.m in Sources */,
 				BA37F5DC14A0027500A78417 /* Path.m in Sources */,
 				BA37F5DF14A0041300A78417 /* PathView.m in Sources */,
 				BA4D039514B66EAA0044D52F /* TripsViewController.m in Sources */,

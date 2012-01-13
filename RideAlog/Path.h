@@ -8,7 +8,6 @@
 
 #import <MapKit/MapKit.h>
 #import <pthread.h>
-#import "Waypoint.h"
 
 @interface Path : NSObject <MKOverlay, NSCoding>
 { 

@@ -100,8 +100,23 @@
   return [NSArray arrayWithObjects:showMaps, flexibleSpace, addNewMap, nil];
 }
 
--(void) tripsViewController:(TripsViewController *)viewController didSelectRoute:(Path *)path {
+-(void) tripsViewController:(TripsViewController *)viewController didSelectRoute:(Path *)aPath {
   [self hideRoutes];
+  
+  if(aPath) {
+    if(path) {
+      [path save];
+      [mapView removeOverlay:path];
+      self.path = nil;
+      self.pathView = nil;
+    }
+    
+    self.path = aPath;
+    [mapView addOverlay:path];
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([path getCentroid], [path getHeight], [path getWidth]);
+    [mapView setRegion:region animated:NO];
+  }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

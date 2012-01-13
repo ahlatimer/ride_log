@@ -52,9 +52,10 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([path getCentroid], [path getHeight], [path getWidth]);
     [mapView setRegion:region animated:NO];
     
-    UITextView *name = [[UITextView alloc] initWithFrame:CGRectMake(100, 20, 100, 20)];
+    UITextView *name = [[UITextView alloc] initWithFrame:CGRectMake(0, 20, 320, 40)];
     name.text = [[trips getPathAtIndex:i] name];
-    name.backgroundColor = [UIColor clearColor];
+    name.textAlignment = UITextAlignmentCenter;
+    name.font = [UIFont systemFontOfSize:20];
     [mapView addSubview:name];
     
     [scrollView addSubview:mapView];
@@ -84,7 +85,13 @@
 }
 
 - (void) selectRoute {
-  [delegate tripsViewController:self didSelectRoute:nil];
+  NSInteger page = (int) (scrollView.contentOffset.x / 320);
+  if(page < [trips countOfPaths]) {
+    Path *selectedPath = [trips getPathAtIndex:page];
+    [delegate tripsViewController:self didSelectRoute:selectedPath];
+  } else {
+    [delegate tripsViewController:self didSelectRoute:nil];
+  }
   
 }
 
